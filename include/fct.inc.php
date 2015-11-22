@@ -7,15 +7,15 @@
  */
 /**
  * Teste si un quelconque visiteur est connecté
- * @return vrai ou faux 
+ * @return vrai ou faux
  */
 function estConnecte() {
     return isset($_SESSION['idVisiteur']);
 }
 /**
  * Enregistre dans une variable session les infos d'un visiteur
- * 
- * @param $id 
+ *
+ * @param $id
  * @param $nom
  * @param $prenom
  */
@@ -32,7 +32,7 @@ function deconnecter() {
 }
 /**
  * Transforme une date au format français jj/mm/aaaa vers le format anglais aaaa-mm-jj
- * 
+ *
  * @param $madate au format  jj/mm/aaaa
  * @return la date au format anglais aaaa-mm-jj
  */
@@ -41,8 +41,8 @@ function dateFrancaisVersAnglais($maDate) {
     return date('Y-m-d', mktime(0, 0, 0, $mois, $jour, $annee));
 }
 /**
- * Transforme une date au format format anglais aaaa-mm-jj vers le format français jj/mm/aaaa 
- * 
+ * Transforme une date au format format anglais aaaa-mm-jj vers le format français jj/mm/aaaa
+ *
  * @param $madate au format  aaaa-mm-jj
  * @return la date au format format français jj/mm/aaaa
  */
@@ -53,7 +53,7 @@ function dateAnglaisVersFrancais($maDate) {
 }
 /**
  * retourne le mois au format aaaamm selon le jour dans le mois
- * 
+ *
  * @param $date au format  jj/mm/aaaa
  * @return le mois au format aaaamm
  */
@@ -67,7 +67,7 @@ function getMois($date) {
 /* gestion des erreurs */
 /**
  * Indique si une valeur est un entier positif ou nul
- * 
+ *
  * @param $valeur
  * @return vrai ou faux
  */
@@ -76,7 +76,7 @@ function estEntierPositif($valeur) {
 }
 /**
  * Indique si un tableau de valeurs est constitué d'entiers positifs ou nuls
- * 
+ *
  * @param $tabEntiers : le tableau
  * @return vrai ou faux
  */
@@ -91,8 +91,8 @@ function estTableauEntiers($tabEntiers) {
 }
 /**
  * Vérifie si une date est inférieure d'un an à la date actuelle
- * 
- * @param $dateTestee 
+ *
+ * @param $dateTestee
  * @return vrai ou faux
  */
 function estDateDepassee($dateTestee) {
@@ -104,9 +104,9 @@ function estDateDepassee($dateTestee) {
     return ($anneeTeste . $moisTeste . $jourTeste < $AnPasse);
 }
 /**
- * Vérifie la validité du format d'une date française jj/mm/aaaa 
- * 
- * @param $date 
+ * Vérifie la validité du format d'une date française jj/mm/aaaa
+ *
+ * @param $date
  * @return vrai ou faux
  */
 function estDateValide($date) {
@@ -126,21 +126,21 @@ function estDateValide($date) {
     return $dateOK;
 }
 /**
- * Vérifie que le tableau de frais ne contient que des valeurs numériques 
- * 
- * @param $lesFrais 
+ * Vérifie que le tableau de frais ne contient que des valeurs numériques
+ *
+ * @param $lesFrais
  * @return vrai ou faux
  */
 function lesQteFraisValides($lesFrais) {
     return estTableauEntiers($lesFrais);
 }
 /**
- * Vérifie la validité des trois arguments : la date, le libellé du frais et le montant 
- * 
+ * Vérifie la validité des trois arguments : la date, le libellé du frais et le montant
+ *
  * des message d'erreurs sont ajoutés au tableau des erreurs
- * 
- * @param $dateFrais 
- * @param $libelle 
+ *
+ * @param $dateFrais
+ * @param $libelle
  * @param $montant
  */
 function valideInfosFrais($dateFrais, $libelle, $montant) {
@@ -170,9 +170,9 @@ function valideInfosFrais($dateFrais, $libelle, $montant) {
     }
 }
 /**
- * Ajoute le libellé d'une erreur au tableau des erreurs 
- * 
- * @param $msg : le libellé de l'erreur 
+ * Ajoute le libellé d'une erreur au tableau des erreurs
+ *
+ * @param $msg : le libellé de l'erreur
  */
 function ajouterErreur($msg) {
     if (!isset($_REQUEST['erreurs'])) {
@@ -181,8 +181,8 @@ function ajouterErreur($msg) {
     $_REQUEST['erreurs'][] = $msg;
 }
 /**
- * Retoune le nombre de lignes du tableau des erreurs 
- * 
+ * Retoune le nombre de lignes du tableau des erreurs
+ *
  * @return le nombre d'erreurs
  */
 function nbErreurs() {

@@ -2,7 +2,7 @@
 <div class="panel panel-primary">
     <div class="panel-heading">Fiche de frais du mois <?php echo $numMois . "-" . $numAnnee ?> : </div>
     <div class="panel-body">
-        <strong><u>Etat :</u></strong> <?php echo $libEtat ?> depuis le <?php echo $dateModif ?> <br> 
+        <strong><u>Etat :</u></strong> <?php echo $libEtat ?> depuis le <?php echo $dateModif ?> <br>
         <strong><u>Montant validé :</u></strong> <?php echo $montantValide ?>
     </div>
 </div>
@@ -13,7 +13,7 @@
             <?php
             foreach ($lesFraisForfait as $unFraisForfait) {
                 $libelle = $unFraisForfait['libelle'];
-                ?>	
+                ?>
                 <th> <?php echo htmlspecialchars($libelle) ?></th>
                 <?php
             }
@@ -38,15 +38,15 @@
         {
           $txtJustificatif = " justicatifs reçus";
         }
-        
+
     ?>
     <div class="panel-heading">Descriptif des éléments hors forfait - <?php echo $nbJustificatifs;  echo $txtJustificatif; ?></div>
-    
+
     <table class="table table-bordered table-responsive">
         <tr>
             <th class="date">Date</th>
             <th class="libelle">Libellé</th>
-            <th class='montant'>Montant</th>                
+            <th class='montant'>Montant</th>
         </tr>
         <?php
         foreach ($lesFraisHorsForfait as $unFraisHorsForfait) {

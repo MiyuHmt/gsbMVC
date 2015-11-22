@@ -21,6 +21,7 @@ switch ($action) {
                 $nom = $visiteur['nom'];
                 $prenom = $visiteur['prenom'];
                 connecter($id, $nom, $prenom);
+
                 // fix header redirection
                 echo '<script>window.location.replace("index.php");</script>';
                 // error the header must be the first before the html

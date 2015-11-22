@@ -23,7 +23,7 @@ switch ($action) {
             $numAnnee = substr($leMois, 0, 4);
             $numMois = substr($leMois, 4, 2);
             $libEtat = $lesInfosFicheFrais['libEtat'];
-            $montantValide = str_replace(".", ",", $lesInfosFicheFrais['montantValide']); 
+            $montantValide = str_replace(".", ",", $lesInfosFicheFrais['montantValide']);
             $nbJustificatifs = $lesInfosFicheFrais['nbJustificatifs'];
             $dateModif = $lesInfosFicheFrais['dateModif'];
             $dateModif = dateAnglaisVersFrancais($dateModif);
