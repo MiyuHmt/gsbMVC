@@ -1,0 +1,13 @@
+nbproject/
+build/
+nbbuild/
+dist/
+nbdist/
+nbactions.xml
+nb-configuration.xml
+.sass-cache
+*.css.map
+## MAC OS
+.DS_Store
+._*
+.Trashes
