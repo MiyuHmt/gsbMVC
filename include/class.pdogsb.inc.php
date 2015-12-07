@@ -300,22 +300,18 @@ class PdoGsb {
     }
 
     /**
-<<<<<<< HEAD
      * Retourne les mois pour lesquels un visiteur a une fiche de frais
-=======
-     * Retourne les mois pour lesquel un visiteur a une fiche de frais
->>>>>>> c77aa97ccc4ea4c99cabe6f22ea8633f5ce651f4
+
      *
      * @param $idVisiteur
-     * @return un tableau associatif de clé un mois -aaaamm- et de valeurs l'année et le mois correspondant
+     * @return un tableau associatif de clé un mois -aaaamm- et de valeur l'année et le mois correspondant
      */
     public function getLesMoisDisponibles($idVisiteur) {
-        $id = 'a131';
         $requete_prepare = PdoGSB::$monPdo->prepare("SELECT fichefrais.mois AS mois "
                 . "FROM fichefrais "
                 . "WHERE fichefrais.idvisiteur = :unIdVisiteur "
                 . "ORDER BY fichefrais.mois desc");
-        $requete_prepare->bindParam(':unIdVisiteur', $id, PDO::PARAM_STR);
+        $requete_prepare->bindParam(':unIdVisiteur', $idVisiteur, PDO::PARAM_STR);
         $requete_prepare->execute();
         $lesMois = array();
         while ($laLigne = $requete_prepare->fetch()) {
@@ -330,7 +326,32 @@ class PdoGsb {
         }
         return $lesMois;
     }
-
+    
+    /**
+     * Retourne les années pour lesquelles un visiteur a une fiche de frais
+     *
+     * @param $idVisiteur
+     * @return un tableau associatif de clé une année -aaaa- et de valeur l'année correspondante
+     */
+    public function getLesAnneesDisponibles($idVisiteur) {
+        $requete_prepare = PdoGSB::$monPdo->prepare("SELECT fichefrais.mois AS annee "
+                . "FROM fichefrais "
+                . "WHERE fichefrais.idvisiteur = :unIdVisiteur "
+                . "ORDER BY fichefrais.mois desc");
+        $requete_prepare->bindParam(':unIdVisiteur', $idVisiteur, PDO::PARAM_STR);
+        $requete_prepare->execute();
+        $lesAnnees = array();
+        while ($laLigne = $requete_prepare->fetch()) {
+            $annee = $laLigne['annee'];
+            $numAnnee = substr($annee, 0, 4);
+            $lesAnnees['$annee'] = array(
+                "annee" => "$annee",
+                "numAnnee" => "$numAnnee"
+            );
+        }
+        return $lesAnnees;
+    }
+    
     /**
      * Retourne les informations d'une fiche de frais d'un visiteur pour un mois donné
      *
@@ -351,6 +372,7 @@ class PdoGsb {
         $laLigne = $requete_prepare->fetch();
         return $laLigne;
     }
+    
 
     /**
      * Modifie l'état et la date de modification d'une fiche de frais

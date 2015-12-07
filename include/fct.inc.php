@@ -155,6 +155,11 @@ function valideInfosFrais($dateFrais, $libelle, $montant) {
             }
         }
     }
+    if($dateFrais < date(Y-M-D))
+    {
+        ajouterErreur("La date doit être valide !");
+    }
+    
     if ($libelle == "") {
         ajouterErreur("Le champ description ne peut pas être vide");
     } else {
